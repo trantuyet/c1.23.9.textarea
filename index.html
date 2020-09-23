@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h1>Type anything showly</h1>
+    <textarea oninput="fakeText()" id="txt" cols="30" rows="10"></textarea>
+</center>
+<script>
+    let txt = 'Trăm năm trong cõi người ta,\n' +
+        'Chữ tài chữ mệnh khéo là ghét nhau.\n' +
+        'Trải qua một cuộc bể dâu,\n' +
+        'Những điều trông thấy mà đau đớn lòng.\n' +
+        'Lạ gì bỉ sắc tư phong,\n' +
+        'Trời xanh quen thói má hồng đánh ghen.\n' +
+        'Cảo thơm lần giở trước đèn,\n' +
+        'Phong tình cổ lục còn truyền sử xanh.\n' +
+        'Rằng: Năm Gia-tĩnh triều Minh,\n' +
+        'Bốn phương phẳng lặng hai kinh chữ vàng.\n' +
+        'Có nhà viên ngoại họ Vương,\n' +
+        'Gia tư nghỉ cũng thường thường bậc trung.\n' +
+        'Một trai con thứ rốt lòng,\n' +
+        'Vương Quan là chữ nối dòng nho gia.\n' +
+        'Đầu lòng hai ả tố nga,\n' +
+        'Thúy Kiều là chị em là Thúy Vân.\n' +
+        'Mai cốt cách tuyết tinh thần,\n' +
+        'Mỗi người một vẻ mười phân vẹn mười.\n' +
+        'Vân xem trang trọng khác vời,\n' +
+        'Khuôn trăng đầy đặn nét ngài nở nang.\n' +
+        'Hoa cười ngọc thốt đoan trang,\n' +
+        'Mây thua nước tóc tuyết nhường màu da.\n' +
+        'Kiều càng sắc sảo mặn mà,\n' +
+        'So bề tài sắc lại là phần hơn.\n' +
+        'Làn thu thủy nét xuân sơn,\n' +
+        'Hoa ghen thua thắm liễu hờn kém xanh.\n' +
+        'Một hai nghiêng nước nghiêng thành,\n' +
+        'Sắc đành đòi một tài đành họa hai.\n' +
+        'Thông minh vốn sẵn tính trời,\n' +
+        'Pha nghề thi họa đủ mùi ca ngâm.\n' +
+        'Cung thương làu bậc ngũ âm,\n' +
+        'Nghề riêng ăn đứt hồ cầm một trương.\n' +
+        'Khúc nhà tay lựa nên xoang,\n' +
+        'Một thiên Bạc mệnh lại càng não nhân.\n' +
+        'Phong lưu rất mực hồng quần,\n' +
+        'Xuân xanh xấp xỉ tới tuần cập kê.\n' +
+        'Êm đềm trướng rủ màn che,\n' +
+        'Tường đông ong bướm đi về mặc ai.\n' +
+        'Ngày xuân con én đưa thoi,\n' +
+        'Thiều quang chín chục đã ngoài sáu mươi.\n' +
+        'Cỏ non xanh tận chân trời,\n' +
+        'Cành lê trắng điểm một vài bông hoa.\n' +
+        'Thanh minh trong tiết tháng ba,\n' +
+        'Lễ là tảo mộ hội là đạp thanh.\n' +
+        'Gần xa nô nức yến anh,\n' +
+        'Chị em sắm sửa bộ hành chơi xuân.\n' +
+        'Dập dìu tài tử giai nhân,\n' +
+        'Ngựa xe như nước áo quần như nêm.\n' +
+        'Ngổn ngang gò đống kéo lên,\n' +
+        'Thoi vàng vó rắc tro tiền giấy bay.\n' +
+        'Tà tà bóng ngả về tây,\n' +
+        'Chị em thơ thẩn dan tay ra về.\n' +
+        'Bước dần theo ngọn tiểu khê,\n' +
+        'Lần xem phong cảnh có bề thanh thanh.\n' +
+        'Nao nao dòng nước uốn quanh,\n' +
+        'Nhịp cầu nho nhỏ cuối ghềnh bắc ngang.\n' +
+        'Sè sè nấm đất bên đường,\n' +
+        'Dàu dàu ngọn cỏ nửa vàng nửa xanh.\n' +
+        'Rằng: Sao trong tiết Thanh minh,\n' +
+        'Mà đây hương khói vắng tanh thế này?\n' +
+        'Vương Quan mới dẫn gần xa:\n' +
+        'Đạm Tiên nàng ấy xưa là ca nhi.\n' +
+        'Nổi danh tài sắc một thì,\n' +
+        'Xôn xao ngoài cửa hiếm gì yến anh.\n' +
+        'Kiếp hồng nhan có mong manh,\n' +
+        'Nửa chừng xuân thoắt gãy cành thiên hương.\n' +
+        'Có người khách ở viễn phương,\n' +
+        'Xa nghe cũng nức tiếng nàng tìm chơi.\n' +
+        'Thuyền tình vừa ghé tới nơi,\n' +
+        'Thì đà trâm gãy bình rơi bao giờ!\n' +
+        'Buồng không lặng ngắt như tờ,\n' +
+        'Dấu xe ngựa đã rêu lờ mờ xanh.\n' +
+        'Khóc than khôn xiết sự tình,\n' +
+        'Khéo vô duyên bấy là mình với ta!\n' +
+        'Đã không duyên trước chăng mà,\n' +
+        'Thì chi chút ước gọi là duyên sau.\n' +
+        'Sắm sanh nếp tử xe châu,\n' +
+        'Bụi hồng một nấm mặc dầu cỏ hoa.\n' +
+        'Trải bao thỏ lặn ác tà,\n' +
+        'ấy mồ vô chủ ai mà viếng thăm!\n' +
+        'Lòng đâu sẵn mối thương tâm,\n' +
+        'Thoắt nghe Kiều đã đầm đầm châu sa:\n' +
+        'Đau đớn thay phận đàn bà!\n' +
+        'Lời rằng bạc mệnh cũng là lời chung.\n' +
+        'Phũ phàng chi bấy hóa công!\n' +
+        'Ngày xanh mòn mỏi má hồng phôi pha.\n' +
+        'Sống làm vợ khắp người ta,\n' +
+        'Khéo thay thác xuống làm ma không chồng!\n' +
+        'Nào người phượng chạ loan chung,\n' +
+        'Nào người tiếc lục tham hồng là ai?\n' +
+        'Đã không kẻ đoái người hoài,\n' +
+        'Sẵn đây ta kiếm một vài nén hương.\n' +
+        'Gọi là gặp gỡ giữa đường,\n' +
+        'Họa là người dưới suối vàng biết cho.\n' +
+        'Lầm dầm khấn vái nhỏ to,\n' +
+        'Sụp ngồi đặt cỏ trước mồ bước ra.\n' +
+        'Một vùng cỏ áy bóng tà,\n' +
+        'Gió hiu hiu thổi một và bông lau.\n' +
+        'Rút trâm sẵn giắt mái đầu,\n' +
+        'Vạch da cây vịnh bốn câu ba vần.\n' +
+        'Lại càng mê mẩn tâm thần,\n' +
+        'Lại càng đứng lặng tần ngần chẳng ra.\n' +
+        'Lại càng ủ dột nét hoa,\n' +
+        'Sầu tuôn đứt nối châu sa vắn dài.\n' +
+        'Vân rằng: Chị cũng nực cười,\n' +
+        'Khéo dư nước mắt khóc người đời xưa!\n' +
+        'Rằng: Hồng nhan tự nghìn xưa,\n' +
+        'Cái điều bạc mệnh có chừa ai đâu.\n' +
+        'Nỗi niềm tưởng đến mà đau,\n' +
+        'Thấy người nằm đó biết sau thế nào?\n' +
+        'Quan rằng: Chị nói hay sao,\n' +
+        'Một lời là một vận vào khó nghe!\n' +
+        'ở đây âm khí nặng nề,\n' +
+        'Bóng chiều đã ngả dặm về còn xa.\n' +
+        'Kiều rằng: Những đấng tài hoa,\n' +
+        'Thác là thể phách còn là tinh anh,\n' +
+        'Dễ hay tình lại gặp tình,\n' +
+        'Chờ xem ắt thấy hiển linh bây giờ!\n' +
+        'Một lời nói chửa kịp thưa,\n' +
+        'Phút đâu trận gió cuốn cờ đến ngay.\n' +
+        'Aào ào đổ lộc rung cây,\n' +
+        'Ơở trong dường có hương bay ít nhiều.\n' +
+        'Đè chừng ngọn gió lần theo,\n' +
+        'Dấu giày từng bước in rêu rành rành.\n' +
+        'Mặt nhìn ai nấy đều kinh,\n' +
+        'Nàng rằng: Này thực tinh thành chẳng xa.\n' +
+        'Hữu tình ta lại gặp ta,\n' +
+        'Chớ nề u hiển mới là chị em.\n' +
+        'Đã lòng hiển hiện cho xem,\n' +
+        'Tạ lòng nàng lại nối thêm vài lời.\n' +
+        'Lòng thơ lai láng bồi hồi,\n' +
+        'Gốc cây lại vạch một bài cổ thi.\n' +
+        'Dùng dằng nửa ở nửa về,\n' +
+        'Nhạc vàng đâu đã tiếng nghe gần gần.\n' +
+        'Trông chừng thấy một văn nhân\n' +
+        'Lỏng buông tay khấu bước lần dặm băng.\n' +
+        'Đề huề lưng túi gió trăng,\n' +
+        'Sau chân theo một vài thằng con con.\n' +
+        'Tuyết in sắc ngựa câu giòn,\n' +
+        'Cỏ pha màu áo nhuộm non da trời,\n' +
+        'Nẻo xa mới tỏ mặt người,\n' +
+        'Khách đà xuống ngựa tới nơi tự tình.\n' +
+        'Hài văn lần bước dặm xanh,\n' +
+        'Một vùng như thể cây quỳnh cành dao.\n' +
+        'Chàng Vương quen mặt ra chào,\n' +
+        'Hai kiều e lệ nép vào dưới hoa.\n' +
+        'Nguyên người quanh quất đâu xa,\n' +
+        'Họ Kim tên Trọng vốn nhà trâm anh.\n' +
+        'Nền phú hậu bậc tài danh,\n' +
+        'Văn chương nết đất thông minh tính trời.\n' +
+        'Phong tư tài mạo tót vời,\n' +
+        'Vào trong phong nhã ra ngoài hào hoa.\n' +
+        'Chung quanh vẫn đất nước nhà,\n' +
+        'Với Vương Quan trước vốn là đồng thân.\n' +
+        'Trộm nghe thơm nức hương lân,\n' +
+        'Một nền Đồng-tước khóa xuân hai Kiều.\n' +
+        'Nước non cách mấy buồng thêu,\n' +
+        'Những là trộm dấu thầm yêu chốc mòng.\n' +
+        'May thay giải cấu tương phùng,\n' +
+        'Gặp tuần đố lá thỏa lòng tìm hoa.\n' +
+        'Bóng hồng nhác thấy nẻo xa,\n' +
+        'Xuân lan thu cúc mặn mà cả hai.\n' +
+        'Người quốc sắc kẻ thiên tài,\n' +
+        'Tình trong như đã mặt ngoài còn e.\n' +
+        'Chập chờn cơn tỉnh cơn mê.\n' +
+        'Rốn ngồi chẳng tiện dứt về chỉn khôn.\n' +
+        'Bóng tà như giục cơn buồn,\n' +
+        'Khách đà lên ngựa người còn nghé theo.\n' +
+        'Dưới cầu nước chảy trong veo,\n' +
+        'Bên cầu tơ liễu bóng chiều thướt tha.\n' +
+        'Kiều từ trở gót trướng hoa,\n' +
+        'Mặt trời gác núi chiêng đà thu không.\n' +
+        'Gương nga chênh chếch dòm song,\n' +
+        'Vàng gieo ngấn nước cây lồng bóng sân.\n' +
+        'Hải đường lả ngọn đông lân,\n' +
+        'Giọt sương gieo nặng cành xuân la đà.\n' +
+        'Một mình lặng ngắm bóng nga,\n' +
+        'Rộn đường gần với nỗi xa bời bời:\n' +
+        'Người mà đến thế thì thôi,\n' +
+        'Đời phồn hoa cũng là đời bỏ đi!\n' +
+        'Người đâu gặp gỡ làm chi,\n' +
+        'Trăm năm biết có duyên gì hay không?\n' +
+        'Ngổn ngang trăm mối bên lòng,\n' +
+        'Nên câu tuyệt diệu ngụ trong tính tình.\n' +
+        'Chênh chênh bóng nguyệt xế mành,\n' +
+        'Tựa ngồi bên triện một mình thiu thiu.\n' +
+        'Thoắt đâu thấy một tiểu kiều,\n' +
+        'Có chiều phong vận có chiều thanh tân,\n' +
+        'Sương in mặt tuyết pha thân,\n' +
+        'Sen vàng lãng đãng như gần như xa.\n' +
+        'Rước mừng đón hỏi dò la:\n' +
+        'Đào nguyên lạc lối đâu mà đến đây?\n' +
+        'Thưa rằng: Thanh khí xưa nay,\n' +
+        'Mới cùng nhau lúc ban ngày đã quên?\n' +
+        'Hàn gia ở mé tây thiên,\n' +
+        'Dưới dòng nước chảy bên trên có cầu.\n' +
+        'Mấy lòng hạ cố đến nhau,\n' +
+        'Mấy lời hạ tứ ném châu gieo vàng.\n' +
+        'Vâng trình hội chủ xem tường,\n' +
+        'Mà sao trong sổ đoạn trường có tên.\n' +
+        'Âu đành quả kiếp nhân duyên,\n' +
+        'Cũng người một hội một thuyền đâu xa!\n' +
+        'Này mười bài mới mới ra,\n' +
+        'Câu thần lại mượn bút hoa vẽ vời.\n' +
+        'Kiều vâng lĩnh ý đề bài,\n' +
+        'Tay tiên một vẫy đủ mười khúc ngâm.\n' +
+        'Xem thơ nấc nở khen thầm:\n' +
+        'Giá đành tú khẩu cẩm tâm khác thường!\n' +
+        'Ví đem vào tập đoạn trường,\n' +
+        'Thì treo giải nhất chi nhường cho ai!\n' +
+        'Thềm hoa khách đã trở hài,\n' +
+        'Nàng còn cầm lại một hai tự tình.\n' +
+        'Gió đâu sịch bức mành mành,\n' +
+        'Tỉnh ra mới biết rằng mình chiêm bao.\n' +
+        'Trông theo nào thấy đâu nào,\n' +
+        'Hương thừa dường hãy ra vào đâu đây.\n' +
+        'Một mình lưỡng lự canh chầy,\n' +
+        'Đường xa nghĩ nỗi sau này mà kinh!\n' +
+        'Hoa trôi bèo giạt đã đành,\n' +
+        'Biết duyên mình biết phận mình thế thôi!\n' +
+        'Nỗi riêng lớp lớp sóng dồi,\n' +
+        'Nghĩ đòi cơn lại sụt sùi đòi cơn.\n' +
+        'Giọng Kiều rền rĩ trướng loan,\n' +
+        'Nhà huyên chợt tỉnh hỏi cơn có gì:\n' +
+        'Cớ sao trằn trọc canh khuya,\n' +
+        'Màu hoa lê hãy dầm dề giọt mưa?\n' +
+        'Thưa rằng: Chút phận ngây thơ,\n' +
+        'Dưỡng sinh đôi nợ tóc tơ chưa đền.\n' +
+        'Buổi ngày chơi mả Đạm Tiên,\n' +
+        'Nhắp đi thoắt thấy ứng liền chiêm bao.\n' +
+        'Đoạn trường là số thế nào,\n' +
+        'Bài ra thế ấy vịnh vào thế kia.\n' +
+        'Cứ trong mộng triệu mà suy,\n' +
+        'Thân con thôi có ra gì mai sau!\n' +
+        'Dạy rằng: Mộng huyễn chắc đâu,\n' +
+        'Bỗng không mua não chuốc sầu nghĩ nao!\n' +
+        'Vâng lời khuyên giải thấp cao,\n' +
+        'Chưa xong điều nghĩ đã dào mạch Tương,\n' +
+        'Ngoài song thỏ thẻ oanh vàng,\n' +
+        'Nách tường bông liễu bay ngang trước mành.\n' +
+        'Hiên tà gác bóng chênh chênh,\n' +
+        'Nỗi riêng, riêng chạnh tấc riêng một mình.\n' +
+        'Cho hay là giống hữu tình,\n' +
+        'Đố ai gỡ mối tơ mành cho xong!\n' +
+        'Chàng Kim từ lại thư song,\n' +
+        'Nỗi nàng canh cánh bên lòng biếng khuây.\n' +
+        'Sầu đong càng lắc càng đầy,\n' +
+        'Ba thu dồn lại một ngày dài ghê!\n' +
+        'Mây Tần khóa kín song the,\n' +
+        'Bụi hồng liệu nẻo đi về chiêm bao.\n' +
+        'Tuần trăng khuyết đĩa dầu hao,\n' +
+        'Mặt mơ tưởng mặt lòng ngao ngán lòng.\n' +
+        'Buồng văn hơi giá như đồng,\n' +
+        'Trúc se ngọn thỏ tơ chùng phím loan.\n' +
+        'Mành Tương phất phất gió đàn,\n' +
+        'Hương gây mùi nhớ trà khan giọng tình.\n' +
+        'Ví chăng duyên nợ ba sinh,\n' +
+        'Làm chi đem thói khuynh thành trêu ngươi.\n' +
+        'Bâng khuâng nhớ cảnh nhớ người,\n' +
+        'Nhớ nơi kỳ ngộ vội dời chân đi.\n' +
+        'Một vùng cỏ mọc xanh rì,\n' +
+        'Nước ngâm trong vắt thấy gì nữa đâu!\n' +
+        'Gió chiều như giục cơn sầu,\n' +
+        'Vi lô hiu hắt như màu khơi trêu.\n' +
+        'Nghề riêng nhớ ít tưởng nhiều,\n' +
+        'Xăm xăm đè nẻo Lam-kiều lần sang.\n' +
+        'Thâm nghiêm kín cổng cao tường,\n' +
+        'Cạn dòng lá thắm dứt đường chim xanh.\n' +
+        'Lơ thơ tơ liễu buông mành,\n' +
+        'Con oanh học nói trên cành mỉa mai.\n' +
+        'Mấy lần cửa đóng then cài,\n' +
+        'Dẫy thềm hoa rụng biết người ở đâu?\n' +
+        'Tần ngần đứng suối giờ lâu,\n' +
+        'Dạo quanh chợt thấy mái sau có nhà.\n' +
+        'Là nhà Ngô Việt thương gia,\n' +
+        'Buồng không để đó người xa chưa về.\n' +
+        'Lấy điều du học hỏi thuê,\n' +
+        'Túi đàn cặp sách đề huề dọn sang.\n' +
+        'Có cây có đá sẵn sàng,\n' +
+        'Có hiên Lãm-thúy nét vàng chưa phai.\n' +
+        'Mừng thầm chốn ấy chữ bài,\n' +
+        'Ba sinh âu hẳn duyên trời chi đây!\n' +
+        'Song hồ nửa khép cánh mây,\n' +
+        'Tường đông ghé mắt ngày ngày hằng trông.\n' +
+        'Tấc gang động khóa nguồn phong,\n' +
+        'Tuyệt mù nào thấy bóng hồng vào ra.\n' +
+        'Nhẫn từ quán khách lân la,\n' +
+        'Tuần trăng thấm thoắt nay đà thèm hai.\n' +
+        'Cách tường phải buổi êm trời,\n' +
+        'Dưới đào dường có bóng người thướt tha.\n' +
+        'Buông cầm xóc áo vội ra,\n' +
+        'Hương còn thơm nức người đà vắng tanh.\n' +
+        'Lần theo tường gấm dạo quanh,\n' +
+        'Trên đào nhác thấy một cành kim thoa.\n' +
+        'Giơ tay với lấy về nhà:\n' +
+        'Này trong khuê các đâu mà đến đây?\n' +
+        'Gẫm âu người ấy báu này,\n' +
+        'Chẳng duyên chưa dễ vào tay ai cầm!\n' +
+        'Liền tay ngắm nghía biếng nằm,\n' +
+        'Hãy còn thoang thoảng hương trầm chưa phai.\n' +
+        'Tan sương đã thấy bóng người,\n' +
+        'Quanh tường ra ý tìm tòi ngẩn ngơ.\n' +
+        'Sinh đà có ý đợi chờ,\n' +
+        'Cách tường lên tiếng xa đưa ướm lòng:\n' +
+        'Thoa này bắt được hư không,\n' +
+        'Biết đâu Hợp-phố mà mong châu về?\n' +
+        'Tiếng Kiều nghe lọt bên kia:\n' +
+        'Ơn lòng quân tử sá gì của rơi.\n' +
+        'Chiếc thoa nào của mấy mươi,\n' +
+        'Mà lòng trọng nghĩa khinh tài xiết bao!\n' +
+        'Sinh rằng: Lân lý ra vào,\n' +
+        'Gần đây nào phải người nào xa xôi.\n' +
+        'Được rày nhờ chút thơm rơi,\n' +
+        'Kể đà thiểu não lòng người bấy nay!\n' +
+        'Bấy lâu mới được một ngày,\n' +
+        'Dừng chân gạn chút niềm tây gọi là.\n' +
+        'Vội về thêm lấy của nhà,\n' +
+        'Xuyến vàng đôi chiếc khăn là một vuông.\n' +
+        'Bậc mây rón bước ngọn tường,\n' +
+        'Phải người hôm nọ rõ ràng chẳng nhe?\n' +
+        'Sượng sùng giữ ý rụt rè,\n' +
+        'Kẻ nhìn rõ mặt người e cúi đầu.\n' +
+        'Rằng: Từ ngẫu nhĩ gặp nhau.\n' +
+        'Thầm trông trộm nhớ bấy lâu đã chồn.\n' +
+        'Xương mai tính đã rũ mòn,\n' +
+        'Lần lừa ai biết hãy còn hôm nay!\n' +
+        'Tháng tròn như gởi cung mây,\n' +
+        'Trần trần một phận ấp cây đã liều!\n' +
+        'Tiện đây xin một hai điều,\n' +
+        'Đài gương soi đến dấu bèo cho chăng?\n' +
+        'Ngần ngừ nàng mới thưa rằng:\n' +
+        'Thói nhà băng tuyết chất hằng phỉ phong,\n' +
+        'Dù khi lá thắm chỉ hồng,\n' +
+        'Nên chăng thì cũng tại lòng mẹ cha.\n' +
+        'Nặng lò xót liễu vì hoa,\n' +
+        'Trẻ thơ đã biết đâu mà dám thưa!\n' +
+        'Sinh rằng: Rày gió mai mưa,\n' +
+        'Ngày xuân đã dễ tình cờ mấy khi!\n' +
+        'Dù chăng xét tấm tình si,\n' +
+        'Thiệt đây mà có ích gì đến ai?\n' +
+        'Chút chi gắn bó một hai,\n' +
+        'Cho đành rồi sẽ liệu bài mối manh.\n' +
+        'Khuôn thiêng dù phụ tấc thành,\n' +
+        'Cũng liều bỏ quá xuân xanh một đời.\n' +
+        'Lượng xuân dù quyết hẹp hòi,\n' +
+        'Công đeo đuổi chẳng thiệt thòi lắm ru!\n' +
+        'Lặng nghe lời nói như ru,\n' +
+        'Chiều xuân dễ khiến nét thu ngại ngùng.\n' +
+        'Rằng: Trong buổi mới lạ lùng,\n' +
+        'Nể lòng có lẽ cầm lòng cho đang!\n' +
+        'Đã lòng quân tử đa mang,\n' +
+        'Một lời vàng tạc đá vàng thủy chung.\n' +
+        'Được lời như cởi tấm lòng,\n' +
+        'Giờ kim hoàn với khăn hồng trao tay.\n' +
+        'Rằng: Trăm năm cũng từ đây,\n' +
+        'Của tin gọi một chút này làm ghi.\n' +
+        'Sẵn tay khăn gâm quạt quỳ,\n' +
+        'Với cành thoa ấy tức thì đổi trao.\n' +
+        'Một lời vừa gắn tất giao,\n' +
+        'Mái sau dường có xôn xao tiếng người.\n' +
+        'Vội vàng lá rụng hoa rơi,\n' +
+        'Chàng về viện sách nàng dời lầu trang.\n' +
+        'Từ phen đá biết tuổi vàng,\n' +
+        'Tình càng thấm thía dạ càng ngẩn ngơ.\n' +
+        'Sông Tương một dải nông sờ,\n' +
+        'Bên trông đầu nọ bên chờ suối kia.\n' +
+        'Một tường tuyết trở sương che.\n' +
+        'Tin xuân đâu dễ đi về cho năng.\n' +
+        'Lần lần ngày gió đêm trăng,\n' +
+        'Thưa hồng rậm lục đã chừng xuân qua.\n' +
+        'Ngày vừa sinh nhật ngoại gia,\n' +
+        'Trên hai đường dưới nữa là hai em.\n' +
+        'Tưng bừng sắm sửa áo xiêm,\n' +
+        'Biện dâng một lễ xa đem tấc thành.\n' +
+        'Nhà lan thanh vắng một mình,\n' +
+        'Ngẫm cơ hội ngộ đã dành hôm nay.\n' +
+        'Thời trân thức thức sẵn bày,\n' +
+        'Gót sen thoăn thoắt dạo ngay mái tường.\n' +
+        'Cách hoa sẽ dặng tiếng vàng,\n' +
+        'Dưới hoa đã thấy có chàng đứng trông:\n' +
+        'Trách lòng hờ hững với lòng,\n' +
+        'Lửa hương chốc để lạnh lùng bấy lâu.\n' +
+        'Những là đắp nhớ đổi sầu,\n' +
+        'Tuyết sương nhuốm nửa mái đầu hoa râm.\n' +
+        'Nàng rằng: Gió bắt mưa cầm,\n' +
+        'Đã cam tệ với tri âm bấy chầy.\n' +
+        'Vắng nhà được buổi hôm nay,\n' +
+        'Lấy lòng gọi chút ra đây tạ lòng!\n' +
+        'Lần theo núi giả đi vòng,\n' +
+        'Cuối tường dường có nẻo thông mới rào.\n' +
+        'Xắn tay mở khóa động đào,\n' +
+        'Rẽ mây trông tỏ lối vào Thiên-thai.\n' +
+        'Mặt nhìn mặt càng thêm tươi,\n' +
+        'Bên lời vạn phúc bên lời hàn huyên.\n' +
+        'Sánh vai về chốn thư hiên,\n' +
+        'Góp lời phong nguyệt nặng nguyền non sông.\n' +
+        'Trên yên bút giá thi đồng,\n' +
+        'Đạm thanh một bức tranh tùng treo trên.\n' +
+        'Phong sương được vẻ thiên nhiên,\n' +
+        'Mặt khen nét bút càng nhìn càng tươi.\n' +
+        'Sinh rằng: Phác họa vừa rồi,\n' +
+        'Phẩm đề xin một vài lời thêm hoa.\n' +
+        'Tay tiên gió táp mưa sa,\n' +
+        'Khoảng trên dừng bút thảo và bốn câu.\n' +
+        'Khen: Tài nhả ngọc phun châu,\n' +
+        'Nàng Ban ả Tạ cũng đâu thế này!\n' +
+        'Kiếp tu xưa ví chưa dày,\n' +
+        'Phúc nào nhắc được giá này cho ngang!\n' +
+        'Nàng rằng: Trộm liếc dung quang,\n' +
+        'Chẳng sân ngọc bội cũng phường kim môn.\n' +
+        'Nghĩ mình phận mỏng cánh chuồn,\n' +
+        'Khuôn xanh biết có vuông tròn mà hay?\n' +
+        'Nhớ từ năm hãy thơ ngây,\n' +
+        'Có người tướng sĩ đoán ngay một lời:\n' +
+        'Anh hoa phát tiết ra ngoài,\n' +
+        'Nghìn thu bạc mệnh một đời tài hoa.\n' +
+        'Trông người lại ngẫm đến ta,\n' +
+        'Một dầy một mỏng biết là có nên?\n' +
+        'Sinh rằng: Giải cấu là duyên,\n' +
+        'Xưa nay nhân định thắng thiên cũng nhiều.\n' +
+        'Ví dù giải kết đến điều,\n' +
+        'Thì đem vàng đá mà liều với thân!\n' +
+        'Đủ điều trung khúc ân cần,\n' +
+        'Lòng xuân phơi phới chén xuân tàng tàng.\n' +
+        'Ngày vui ngắn chẳng đầy gang,\n' +
+        'Trông ra ác đã nhậm gương non đoài.\n' +
+        'Vắng nhà chẳng tiện ngồi dai,\n' +
+        'Giã chàng nàng mới kíp dời song sa.\n' +
+        'Đến nhà vừa thấy tin nhà,\n' +
+        'Hai thân còn dở tiệc hoa chưa về.\n' +
+        'Cửa ngoài vội rủ rèm the,\n' +
+        'Xăm xăm băng lối vườn khuya một mình.\n' +
+        'Nhặt thưa gương giọi đầu cành,\n' +
+        'Ngọn đèn trông lọt trướng huỳnh hắt hiu.\n' +
+        'Sinh vừa tựa án thiu thiu,\n' +
+        'Dở chiều như tỉnh dở chiều như mê.\n' +
+        'Tiếng sen sẽ động giấc hòe,\n' +
+        'Bóng trăng đã xế hoa lê lại gần.\n' +
+        'Bâng khuâng đỉnh Giáp non Thần,\n' +
+        'Còn ngờ giấc mộng đêm xuân mơ màng.\n' +
+        'Nàng rằng: Khoảng vắng đêm trường,\n' +
+        'Vì hoa nên phải đánh đường tìm hoa.\n' +
+        'Bây giờ rõ mặt đôi ta,\n' +
+        'Biết đâu rồi nữa chẳng là chiêm bao?\n' +
+        'Vội mừng làm lễ rước vào,\n' +
+        'Đài sen nối sáp song đào thêm hương.\n' +
+        'Tiên thề cùng thảo một chương,\n' +
+        'Tóc mây một món dao vàng chia đôi.\n' +
+        'Vầng trăng vằng vặc giữa trời,\n' +
+        'Đinh ninh hai mặt một lời song song.\n' +
+        'Tóc tơ căn vặn tấc lòng,\n' +
+        'Trăm năm tạc một chữ đồng đến xương.\n' +
+        'Chén hà sánh giọng quỳnh tương,\n' +
+        'Dải là hương lộn bình gương bóng lồng.\n' +
+        'Sinh rằng: Gió mát trăng trong,\n' +
+        'Bấy lâu nay một chút lòng chưa cam.\n' +
+        'Chày sương chưa nện cầu Lam,\n' +
+        'Sợ lần khân quá ra sàm sỡ chăng?\n' +
+        'Nàng rằng: Hồng diệp xích thằng,\n' +
+        'Một lời cũng đã tiếng rằng tương tri.\n' +
+        'Đừng điều nguyệt nọ hoa kia.\n' +
+        'Ngoài ra ai lại tiếc gì với ai.\n' +
+        'Rằng: Nghe nổi tiếng cầm đài,\n' +
+        'Nước non luống những lắng tai Chung Kỳ.\n' +
+        'Thưa rằng: Tiện kỹ sá chi,\n' +
+        'Đã lòng dạy đến dạy thì phải vâng.\n' +
+        'Hiên sau treo sẵn cầm trăng,\n' +
+        'Vội vàng sinh đã tay nâng ngang mày.\n' +
+        'Nàng rằng: Nghề mọn riêng tay,\n' +
+        'Làm chi cho bận lòng này lắm thân!\n' +
+        'So dần dây vũ dây văn,\n' +
+        'Bốn dây to nhỏ theo vần cung thương.\n' +
+        'Khúc đâu Hán Sở chiến trường,\n' +
+        'Nghe ra tiếng sắt tiếng vàng chen nhau.\n' +
+        'Khúc đâu Tư mã-Phượng cầu,\n' +
+        'Nghe ra như oán như sầu phải chăng!\n' +
+        'Kê Khang này khúc Quảng lăng,\n' +
+        'Một rằng lưu thủy hai rằng hành vân.\n' +
+        'Quá quan này khúc Chiêu Quân,\n' +
+        'Nửa phần luyến chúa nửa phần tư gia.\n' +
+        'Trong như tiếng hạc bay qua,\n' +
+        'Đục như tiếng suối mới sa nửa vời.\n' +
+        'Tiếng khoan như gió thoảng ngoài,\n' +
+        'Tiếng mau sầm sập như trời đổ mưa.\n' +
+        'Ngọn đèn khi tỏ khi mờ,\n' +
+        'Khiến người ngồi đó cũng ngơ ngẩn sầu.\n' +
+        'Khi tựa gối khi cúi đầu,\n' +
+        'Khi vò chín khúc khi chau đôi mày.\n' +
+        'Rằng: Hay thì thật là hay,\n' +
+        'Nghe ra ngậm đắng nuốt cay thế nào!\n' +
+        'Lựa chi những bậc tiêu tao,\n' +
+        'Dột lòng mình cũng nao nao lòng người?\n' +
+        'Rằng: Quen mất nết đi rồi,\n' +
+        'Tẻ vui thôi cũng tính trời biết sao!\n' +
+        'Lời vàng vâng lĩnh ý cao,\n' +
+        'Họa dần dần bớt chút nào được không.\n' +
+        'Hoa hương càng tỏ thức hồng,\n' +
+        'Đầu mày cuối mắt càng nồng tấm yêu.\n' +
+        'Sóng tình dường đã xiêu xiêu,\n' +
+        'Xem trong âu yếm có chiều lả lơi.\n' +
+        'Thưa rằng: Đừng lấy làm chơi,\n' +
+        'Dẽ cho thưa hết một lời đã nao!\n' +
+        'Vẻ chi một đóa yêu đào,\n' +
+        'Vườn hồng chi dám ngăn rào chim xanh.\n' +
+        'Đã cho vào bậc bố kinh,\n' +
+        'Đạo tòng phu lấy chữ trinh làm đầu.\n' +
+        'Ra tuồng trên Bộc trong dâu,\n' +
+        'Thì con người ấy ai cầu làm chi!\n' +
+        'Phải điều ăn xổi ở thì,\n' +
+        'Tiết trăm năm nỡ bỏ đi một ngày!\n' +
+        'Ngẫm duyên kỳ ngộ xưa nay,\n' +
+        'Lứa đôi ai lại đẹp tày Thôi Trương.\n' +
+        'Mây mưa đánh đổ đá vàng,\n' +
+        'Quá chiều nên đã chán chường yến anh.\n' +
+        'Trong khi chắp cánh liền cành,\n' +
+        'Mà lòng rẻ rúng đã dành một bên.\n' +
+        'Mái tây để lạnh hương nguyền,\n' +
+        'Cho duyên đằm thắm ra duyên bẻ bàng.\n' +
+        'Gieo thoi trước chẳng giữ giàng,\n' +
+        'Để sau nên thẹn cùng chàng bởi ai?\n' +
+        'Vội chi liễu ép hoa nài,\n' +
+        'Còn thân ắt lại đền bồi có khi!\n' +
+        'Thấy lời đoan chính dễ nghe,\n' +
+        'Chàng càng thêm nể thêm vì mười phân.\n' +
+        'Bóng tàu vừa lạt vẻ ngân,\n' +
+        'Tin đâu đã thấy cửa ngăn gọi vào.\n' +
+        'Nàng thì vội trở buồng thêu,\n' +
+        'Sinh thì dạo gót sân đào bước ra.\n' +
+        'Cửa sài vừa ngỏ then hoa,\n' +
+        'Gia đồng vào gởi thư nhà mới sang.\n' +
+        'Đem tin thúc phụ từ đường,\n' +
+        'Bơ vơ lữ thấn tha hương đề huề.\n' +
+        'Liêu-dương cách trở sơn khê,\n' +
+        'Xuân đường kíp gọi sinh về hộ tang.\n' +
+        'Mảng tin xiết nỗi kinh hoàng,\n' +
+        'Băng mình lẻn trước đài trang tự tình.\n' +
+        'Gót đầu mọi nỗi đinh ninh,\n' +
+        'Nỗi nhà tang tóc nỗi mình xa xôi:\n' +
+        'Sự đâu chưa kịp đôi hồi,\n' +
+        'Duyên đâu chưa kịp một lời trao tơ,\n' +
+        'Trăng thề còn đó trơ trơ,\n' +
+        'Dám xa xôi mặt mà thưa thớt lòng\n' +
+        'Ngoài nghìn dặm chốc ba đông,\n' +
+        'Mối sầu khi gỡ cho xong còn chầy!\n' +
+        'Gìn vàng giữ ngọc cho hay,\n' +
+        'Cho đành lòng kẻ chân mây cuối trời.\n' +
+        'Tai nghe ruột rối bời bời,\n' +
+        'Ngập ngừng nàng mới giãi lời trước sau:\n' +
+        'Ông tơ ghét bỏ chi nhau,\n' +
+        'Chưa vui sum họp đã sầu chia phôi!\n' +
+        'Cùng nhau trót đã nặng lời,\n' +
+        'Dẫu thay mái tóc dám dời lòng tơ!\n' +
+        'Quản bao tháng đợi năm chờ,\n' +
+        'Nghĩ người ăn gió nằm mưa xót thầm.\n' +
+        'Đã nguyền hai chữ đồng tâm,\n' +
+        'Trăm năm thề chẳng ôm cầm thuyền ai.\n' +
+        'Còn non còn nước còn dài,\n' +
+        'Còn về còn nhớ đến người hôm nay!\n' +
+        'Dùng dằng chưa nỡ rời tay,\n' +
+        'Vầng đông trông đã đứng ngay nóc nhà.\n' +
+        'Ngại ngùng một bước một xa,\n' +
+        'Một lời trân trọng châu sa mấy hàng.\n' +
+        'Buộc yên quảy gánh vội vàng,\n' +
+        'Mói sầu sẻ nửa bước đường chia hai.\n' +
+        'Buồn trông phong cảnh quê người,\n' +
+        'Đầu cành quyên nhặt cuối trời nhạn thưa.\n' +
+        'Não người cữ gió tuần mưa,\n' +
+        'Một ngày nặng gánh tương tư một ngày.\n' +
+        'Nàng còn đứng tựa hiên tây,\n' +
+        'Chín hồi vấn vít như vầy mối tơ.\n' +
+        'Trông chừng khói ngất song thưa,\n' +
+        'Hoa trôi giạt thắm liễu xơ xác vàng.\n' +
+        'Tần ngần dạo gót lầu trang,\n' +
+        'Một đoàn mừng thọ ngoại hương mới về.\n' +
+        'Hàn huyên chưa kịp giã giề,\n' +
+        'Sai nha bỗng thấy bốn bề xôn xao:\n' +
+        'Người nách thước kẻ tay đao,\n' +
+        'Đầu trâu mặt ngựa ào ào như sôi.\n' +
+        'Già giang một lão một trai,\n' +
+        'Một dây vô loại buộc hai thâm tình.\n' +
+        'Đầy nhà vang tiếng ruồi xanh,\n' +
+        'Rụng rời khung dệt tan tành gói may.\n' +
+        'Đồ tế nhuyễn của riêng tây\n' +
+        'Sạch sành sanh vét cho đầy túi tham.\n' +
+        'Điều đây bay buộc ai làm,\n' +
+        'Này ai đan giậm giệt giàm bỗng dưng?\n' +
+        'Hỏi ra sau mới biết rằng:\n' +
+        'Phải tên xưng xuất là thằng bán tơ.\n' +
+        'Một nhà hoảng hốt ngẩn ngơ,\n' +
+        'Tiếng oan dậy đất án ngờ lòa mây.\n' +
+        'Hạ từ van lạy suốt ngày,\n' +
+        'Điếc tai lân tuất phũ tay tồi tàn.\n' +
+        'Rường cao rút ngược dây oan,\n' +
+        'Dẫu là đá cũng nát gan lọ người!\n' +
+        'Mặt trông đau đớn rụng rời,\n' +
+        'Oan này còn một kêu trời nhưng xa!\n' +
+        'Một ngày lạ thói sai nha,\n' +
+        'Làm cho khốc hại chẳng qua vì tiền.\n' +
+        'Sao cho cốt nhục vẹn tuyền,\n' +
+        'Trong khi ngộ biến tòng quyền biết sao?\n' +
+        'Duyên hội ngộ đức cù lao,\n' +
+        'Bên tình bên hiếu bên nào nặng hơn?\n' +
+        'Để lời thệ hải minh sơn,\n' +
+        'Làm con trước phải đền ơn sinh thành.\n' +
+        'Quyết tình nàng mới hạ tình:\n' +
+        'Dẽ cho để thiếp bán mình chuộc cha!\n' +
+        'Họ Chung có kẻ lại già,\n' +
+        'Cũng trong nha dịch lại là từ tâm.\n' +
+        'Thấy nàng hiếu trọng tình thâm,\n' +
+        'Vì nàng nghỉ cũng thương thầm xót vay.\n' +
+        'Tính bài lót đó luồn đây,\n' +
+        'Có ba trăm lạng việc này mới xuôi.\n' +
+        'Hãy về tạm phó giam ngoài,\n' +
+        'Dặn nàng quy liệu trong đôi ba ngày.\n' +
+        'Thương tình con trẻ thơ ngây,\n' +
+        'Gặp cơn vạ gió tai bay bất kỳ!\n' +
+        'Đau lòng tử biệt sinh ly,\n' +
+        'Thân còn chẳng tiếc tiếc gì đến duyên?\n' +
+        'Hạt mưa sá nghĩ phận hèn,\n' +
+        'Liệu đem tấc cỏ quyết đền ba xuân.\n' +
+        'Sự lòng ngỏ với băng nhân,\n' +
+        'Tin sương đồn đại xa gần xôn xao.\n' +
+        'Gần miền có một mụ nào,\n' +
+        'Đưa người viễn khách tìm vào vấn danh.\n' +
+        'Hỏi tên, rằng: Mã Giám sinh.\n' +
+        'Hỏi quê, rằng: Huyện Lâm Thanh cũng gần.\n' +
+        'Quá niên trạc ngoại tứ tuần,\n' +
+        'Mày râu nhẵn nhụi áo quần bảnh bao.\n' +
+        'Trước thầy sau tớ lao xao,\n' +
+        'Nhà băng đưa mối rước vào lầu trang.\n' +
+        'Ghế trên ngồi tót sỗ sàng,\n' +
+        'Buồng trong mối đã giục nàng kíp ra.\n' +
+        'Nỗi mình thêm tức nỗi nhà,\n' +
+        'Thềm hoa một bước lệ hoa mấy hàng!\n' +
+        'Ngại ngùng giợn gió e sương,\n' +
+        'Nhìn hoa bóng thẹn trông gương mặt dày.\n' +
+        'Mối càng vén tóc bắt tay,\n' +
+        'Nét buồn như cúc điệu gầy như mai.\n' +
+        'Đắn đo cân nhắc cân tài,\n' +
+        'Eép cung cầm nguyệt thử bài quạt thơ.\n' +
+        'Mặn nồng một vẻ một ưa,\n' +
+        'Bằng lòng khách mới tùy cơ dặt dìu.\n' +
+        'Rằng: Mua ngọc đến Lam-kiều,\n' +
+        'Sính nghi xin dạy bao nhiêu cho tường?\n' +
+        'Mối rằng: Giá đáng nghìn vàng,\n' +
+        'Dớp nhà nhờ lượng người thương dám nài!\n' +
+        'Cò kè bớt một thêm hai,\n' +
+        'Giờ lâu ngã giá vàng ngoài bốn trăm.\n' +
+        'Một lời thuyền đã êm giầm,\n' +
+        'Hãy đưa canh thiếp trước cầm làm ghi.\n' +
+        'Định ngày nạp thái vu quy,\n' +
+        'Tiền lưng đã sẵn việc gì chẳng xong!\n' +
+        'Một lời cậy với Chung công,\n' +
+        'Khất từ tạm lĩnh Vương ông về nhà.\n' +
+        'Thương tình con trẻ cha già,\n' +
+        'Nhìn nàng ông những máu sa ruột dàu:\n' +
+        'Nuôi con những ước về sau,\n' +
+        'Trao tơ phải lứa gieo cầu đáng nơi.\n' +
+        'Trời làm chi cực bấy trời!\n' +
+        'Này ai vu thác cho người hợp tan.\n' +
+        'Búa rìu bao quản thân tàn,\n' +
+        'Nỡ đày đọa trẻ càng oan khốc già!\n' +
+        'Một lần sau trước cũng là,\n' +
+        'Thôi thì mặt khuất chẳng thà lòng đau!\n' +
+        'Theo lời càng chảy dòng châu,\n' +
+        'Liều mình ông rắp gieo đầu tường vôi.\n' +
+        'Vội vàng kẻ giữ người coi,\n' +
+        'Nhỏ to nàng lại tìm lời khuyên can:\n' +
+        'Vẻ chi một mảnh hồng nhan,\n' +
+        'Tóc tơ chưa chút đền ơn sinh thành.\n' +
+        'Dâng thư đã thẹn nàng Oanh,\n' +
+        'Lại thua ả Lý bán mình hay sao?\n' +
+        'Cỗi xuân tuổi hạc càng cao,\n' +
+        'Một cây gánh vác biết bao nhiêu cành.\n' +
+        'Lượng trên dù chẳng dứt tình,\n' +
+        'Gió mưa âu hẳn tan tành nước non.\n' +
+        'Thà rằng liều một thân con,\n' +
+        'Hoa dù rã cánh lá còn xanh cây.\n' +
+        'Phận sao đành vậy cũng vầy,\n' +
+        'Cầm như chẳng đỗ những ngày còn xanh.\n' +
+        'Cũng đừng tính quẩn lo quanh,\n' +
+        'Tan nhà là một thiệt mình là hai.\n' +
+        'Phải lời ông cũng êm tai,\n' +
+        'Nhìn nhau giọt ngắn giọt dài ngổn ngang.\n' +
+        'Mái ngoài họ Mã vừa sang,\n' +
+        'Tờ hoa đã ký cân vàng mới trao.\n' +
+        'Trăng già độc địa làm sao?\n' +
+        'Cầm dây chẳng lựa buộc vào tự nhiên!\n' +
+        'Trong tay đã sẵn đồng tiền,\n' +
+        'Dầu lòng đổi trắng thay đen khó gì!\n' +
+        'Họ Chung ra sức giúp vì,\n' +
+        'Lễ tâm đã đặt tụng kỳ cũng xong.\n' +
+        'Việc nhà đã tạm thong dong,\n' +
+        'Tinh kỳ giục giã đã mong độ về.\n' +
+        'Một mình nàng ngọn đèn khuya,\n' +
+        'Aáo dầm giọt lệ tóc se mái sầu:\n' +
+        'Phận dầu đầu vậy cũng dầu,\n' +
+        'Xót lòng đeo đẳng bấy lâu một lời!\n' +
+        'Công trình kể biết mấy mươi,\n' +
+        'Vì ta khăng khít cho người dở dang.\n' +
+        'Thề hoa chưa ráo chén vàng,\n' +
+        'Lỗi thề thôi đã phụ phàng với hoa!\n' +
+        'Trời Liêu non nước bao xa,\n' +
+        'Nghĩ đâu rẽ cửa chia nhà tự tôi!\n' +
+        'Biết bao duyên nợ thề bồi,\n' +
+        'Kiếp này thôi thế thì thôi còn gì?\n' +
+        'Tái sinh chưa dứt hương thề,\n' +
+        'Làm thân trâu ngựa đền nghì trúc mai\n' +
+        'Nợ tình chưa trả cho ai,\n' +
+        'Khối tình mang xuống tuyền đài chưa tan!\n' +
+        'Nỗi riêng riêng những bàn hoàn,\n' +
+        'Dầu chong trắng đĩa lệ tràn thấm khăn.\n' +
+        'Thúy Vân chợt tỉnh giấc xuân,\n' +
+        'Dưới đèn ghé đến ân cần hỏi han:\n' +
+        'Cơ trời dâu bể đa đoan,\n' +
+        'Một nhà để chị riêng oan một mình.\n' +
+        'Cớ chi ngồi nhẫn tàn canh,\n' +
+        'Nỗi riêng còn mắc mối tình chi đây?\n' +
+        'Rằng: Lòng đương thổn thức đầy,\n' +
+        'Tơ duyên còn vướng mối này chưa xong.\n' +
+        'Hở môi ra cũng thẹn thùng,\n' +
+        'Để lòng thì phụ tấm lòng với ai!\n' +
+        'Cậy em em có chịu lời,\n' +
+        'Ngồi lên cho chị lạy rồi sẽ thưa\n' +
+        'Giữa đường đứt gánh tương tư,\n' +
+        'Keo loan chắp mối tơ thừa mặc em.\n' +
+        'Kể từ khi gặp chàng Kim,\n' +
+        'Khi ngày quạt ước khi đêm chén thề.\n' +
+        'Sự đâu sóng gió bất kỳ,\n' +
+        'Hiếu tình khôn lẽ hai bề vẹn hai.\n' +
+        'Ngày xuân em hãy còn dài,\n' +
+        'Xót tình máu mủ thay lời nước non.\n' +
+        'Chị dù thịt nát xương mòn,\n' +
+        'Ngậm cười chín suối hãy còn thơm lây.\n' +
+        'Chiếc thoa với bức tờ mây,\n' +
+        'Duyên này thì giữ vật này của chung.\n' +
+        'Dù em nên vợ nên chồng,\n' +
+        'Xót người mệnh bạc ắt lòng chẳng quên.\n' +
+        'Mất người còn chút của tin,\n' +
+        'Phím đàn với mảnh hương nguyền ngày xưa.\n' +
+        'Mai sau dù có bao giờ,\n' +
+        'Đốt lò hương ấy so tơ phím này.\n' +
+        'Trông ra ngọn cỏ lá cây,\n' +
+        'Thấy hiu hiu gió thì hay chị về.\n' +
+        'Hồn còn mang nặng lời thề,\n' +
+        'Nát thân bồ liễu đền nghì trúc mai\n' +
+        'Dạ đài cách mặt khuất lời,\n' +
+        'Rảy xin chén nước cho người thác oan.\n' +
+        'Bây giờ trâm gãy gương tan,\n' +
+        'Kể làm sao xiết muôn vàn ái ân!\n' +
+        'Trăm nghìn gởi lạy tình quân,\n' +
+        'Tơ duyên ngắn ngủi có ngần ấy thôi.\n' +
+        'Phận sao phận bạc như vôi,\n' +
+        'Đã đành nước chảy hoa trôi lỡ làng.\n' +
+        'Ôi Kim lang! Hỡi Kim lang!\n' +
+        'Thôi thôi thiếp đã phụ chàng từ đây.';
+    let arrTxt = txt.split(' ');
+    let str = '';
+    let count = 0;
+
+    function fakeText() {
+        str += arrTxt[count] + " ";
+        document.getElementById('txt').value = str;
+        count++;
+        if (count >= arrTxt.length) {
+            str = '';
+            count = 0;
+        }
+    }
+
+</script>
+
+</body>
+</html>
